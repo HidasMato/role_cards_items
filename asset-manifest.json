@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/role_cards_items/static/css/main.f82af09d.css",
+    "main.js": "/role_cards_items/static/js/main.63bb37ff.js",
+    "static/media/Zaychik-Regular.ttf": "/role_cards_items/static/media/Zaychik-Regular.173a33b768ea315638ad.ttf",
+    "static/media/MorningBreeze-Light.otf": "/role_cards_items/static/media/MorningBreeze-Light.823ad7a2f9b297e86b3b.otf",
+    "static/media/Bookerly Italic.ttf": "/role_cards_items/static/media/Bookerly Italic.e10808b250fc36b9d0b9.ttf",
+    "static/media/Bookerly Bold Italic.ttf": "/role_cards_items/static/media/Bookerly Bold Italic.4b8f51ee91345e3baaab.ttf",
+    "static/media/Bookerly.ttf": "/role_cards_items/static/media/Bookerly.de2dc24b013fc498e84e.ttf",
+    "static/media/Bookerly Bold.ttf": "/role_cards_items/static/media/Bookerly Bold.f46ac802648cda7d4123.ttf",
+    "static/media/MorningBreeze-Italic.otf": "/role_cards_items/static/media/MorningBreeze-Italic.22346216afda0a936db3.otf",
+    "static/media/MorningBreeze-Bold.otf": "/role_cards_items/static/media/MorningBreeze-Bold.c0bcded1ca7d64b4c9b9.otf",
+    "static/media/Сапоги.png": "/role_cards_items/static/media/Сапоги.a67a81eb80ceb87c5f29.png",
+    "static/media/Bookerly LCD Italic.ttf": "/role_cards_items/static/media/Bookerly LCD Italic.ddcd571258254c9b03ec.ttf",
+    "static/media/MorningBreeze.otf": "/role_cards_items/static/media/MorningBreeze.5fb97ea56c95da1ebdca.otf",
+    "static/media/HellasDustCyrillic.otf": "/role_cards_items/static/media/HellasDustCyrillic.73dcd44159ed19bfe45d.otf",
+    "static/media/Old-Soviet.otf": "/role_cards_items/static/media/Old-Soviet.670ad5447c0f4c37e625.otf",
+    "static/media/Bookerly LCD Light Italic.ttf": "/role_cards_items/static/media/Bookerly LCD Light Italic.f07da245b8dd18a80d58.ttf",
+    "static/media/Bookerly Light Italic.ttf": "/role_cards_items/static/media/Bookerly Light Italic.f07da245b8dd18a80d58.ttf",
+    "static/media/Bookerly Light.ttf": "/role_cards_items/static/media/Bookerly Light.74043173406f775d7075.ttf",
+    "static/media/Bookerly Display Italic.ttf": "/role_cards_items/static/media/Bookerly Display Italic.b1a505f17141da0e919a.ttf",
+    "static/media/Bookerly Display Bold Italic.ttf": "/role_cards_items/static/media/Bookerly Display Bold Italic.e92c58fbec77159ceba2.ttf",
+    "static/media/Bookerly Display Bold.ttf": "/role_cards_items/static/media/Bookerly Display Bold.d69381fdc3a25cee67d4.ttf",
+    "static/media/Bookerly Display.ttf": "/role_cards_items/static/media/Bookerly Display.1165ce91349db1660781.ttf",
+    "static/media/Square_Meal_RUS_by_Slavchansky.ttf": "/role_cards_items/static/media/Square_Meal_RUS_by_Slavchansky.b7eccccc3a209d8075c9.ttf",
+    "static/media/GULAG Pavljenko.otf": "/role_cards_items/static/media/GULAG Pavljenko.56f6f5a149ae9256a131.otf",
+    "static/media/gogono-cocoa-mochi-cyrillic.otf": "/role_cards_items/static/media/gogono-cocoa-mochi-cyrillic.02b0dd099ffacbbddac3.otf",
+    "static/media/etna-free-font.otf": "/role_cards_items/static/media/etna-free-font.a17cb1da22c3278ad0ba.otf",
+    "static/media/zarubkaType-Regular.ttf": "/role_cards_items/static/media/zarubkaType-Regular.18b0d708fa0e261287a3.ttf",
+    "static/media/Setting.svg": "/role_cards_items/static/media/Setting.c5293a91e0900a696f9d2652eab11712.svg",
+    "static/media/GH.svg": "/role_cards_items/static/media/GH.eb56b18895192763c96f0129ffb9d85f.svg",
+    "static/media/YD.svg": "/role_cards_items/static/media/YD.37a58d66815c3f5ea1a3580d4598ef99.svg",
+    "static/media/VK.svg": "/role_cards_items/static/media/VK.3e60d4ac6239f020fcab393903993970.svg",
+    "static/media/Change.svg": "/role_cards_items/static/media/Change.d2ee68cc10dd187f05c77dcb242a8ce6.svg",
+    "index.html": "/role_cards_items/index.html",
+    "main.f82af09d.css.map": "/role_cards_items/static/css/main.f82af09d.css.map",
+    "main.63bb37ff.js.map": "/role_cards_items/static/js/main.63bb37ff.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f82af09d.css",
+    "static/js/main.63bb37ff.js"
+  ]
+}
