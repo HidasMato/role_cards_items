@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/role_cards_items/static/css/main.c9b9ecfd.css",
-    "main.js": "/role_cards_items/static/js/main.1bef3768.js",
+    "main.css": "/role_cards_items/static/css/main.12edc1a9.css",
+    "main.js": "/role_cards_items/static/js/main.a692543f.js",
     "static/media/Колода иллюзий.png": "/role_cards_items/static/media/Колода иллюзий.193943db057167ee6b17.png",
     "static/media/Заполярные сапоги.png": "/role_cards_items/static/media/Заполярные сапоги.be1c84882335ad6256a4.png",
     "static/media/Щит от заклинаний.png": "/role_cards_items/static/media/Щит от заклинаний.c72d714650cc22372b62.png",
@@ -271,11 +271,11 @@
     "static/media/Change.svg": "/role_cards_items/static/media/Change.d2ee68cc10dd187f05c77dcb242a8ce6.svg",
     "static/media/Download.svg": "/role_cards_items/static/media/Download.2c12be50f262402ed0b6824ddad9d049.svg",
     "index.html": "/role_cards_items/index.html",
-    "main.c9b9ecfd.css.map": "/role_cards_items/static/css/main.c9b9ecfd.css.map",
-    "main.1bef3768.js.map": "/role_cards_items/static/js/main.1bef3768.js.map"
+    "main.12edc1a9.css.map": "/role_cards_items/static/css/main.12edc1a9.css.map",
+    "main.a692543f.js.map": "/role_cards_items/static/js/main.a692543f.js.map"
   },
   "entrypoints": [
-    "static/css/main.c9b9ecfd.css",
-    "static/js/main.1bef3768.js"
+    "static/css/main.12edc1a9.css",
+    "static/js/main.a692543f.js"
   ]
 }
