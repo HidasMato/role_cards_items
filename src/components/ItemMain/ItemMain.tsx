@@ -272,12 +272,12 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
     const bordwrRadiusNames = ["--CardZagolovok┌", "--CardZagolovok┐", "--CardZagolovok┘", "--CardZagolovok└","--CardInside┌","--CardInside┐","--CardInside┘","--CardInside└","--CardDown┌","--CardDown┐","--CardDown┘","--CardDown└","--CardBackZagolovok┌","--CardBackZagolovok┐","--CardBackZagolovok┘","--CardBackZagolovok└","--CardBackPer┌","--CardBackPer┐","--CardBackPer┘","--CardBackPer└","--CardBackInside┌","--CardBackInside┐","--CardBackInside┘","--CardBackInside└","--CardBackDown┌","--CardBackDown┐","--CardBackDown┘","--CardBackDown└","--Krug1┌","--Krug1┐","--Krug1┘","--Krug1└","--Krug2┌","--Krug2┐","--Krug2┘","--Krug2└","--Krug3┌","--Krug3┐","--Krug3┘","--Krug3└","--Krug4┌","--Krug4┐","--Krug4┘","--Krug4└"];
     const [minMax, setMinMax] = useState([8, 12]);
     const [blockMinMax, setBlockMinMax] = useState(false);
-    const [blockColor, setBlockColor] = useState([false]);
-    const [blockSizePole, setBlockSizePole] = useState([false]);
-    const [blockSizeText, setBlockSizeText] = useState([false]);
-    const [blockPaddingText, setBlockPaddingText] = useState([false]);
-    const [blockAlignValue, setBlockAlignValue] = useState([false]);
-    const [blockBorderRadius, setBlockBorderRadius] = useState([false]);
+    const [blockColor, setBlockColor] = useState([false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]);
+    const [blockSizePole, setBlockSizePole] = useState([false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]);
+    const [blockSizeText, setBlockSizeText] = useState([false,false,false,false,false,false,false,false,false,false,false]);
+    const [blockPaddingText, setBlockPaddingText] = useState([false,false,false,false,false,false,false]);
+    const [blockAlignValue, setBlockAlignValue] = useState([false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]);
+    const [blockBorderRadius, setBlockBorderRadius] = useState([false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]);
     const [kolvo, setKolvo] = useState([3,3]);
     const perepolnen: boolean[] = [];
     const [perepolnenText, setPerepolnenText] = useState('');
@@ -287,12 +287,11 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
     const fontMas = ["BookerlyBold", "BookerlyBoldItalic", "BookerlyDisplayBoldItalic", "BookerlyDisplay", "BookerlyItalic", "BookerlyLightItalic", "BookerlyLight", "Bookerly", "EtnaFreeFont", "GogonoCocoaMochiCyrillic", "GULAGPavljenko", "HellasDustCyrillic", "MorningBreezeBold", "MorningBreezeItalic", "MorningBreezeLight", "MorningBreeze", "OldSoviet", "SquareMeal", "ZarubkaTypeRegular", "ZaychikRegular"];
     const [targetFont1, setTargetFont1] = useState(7);
     const [isCSVRedactor, setIsCSVRedactor] = useState(false);
-    const [settingString, setSettingString] = useState("");
     const [rubahaCaseNumber, setRubahaCaseNumber] = useState(9);
     const [svitokCaseNumber, setSvitokCaseNumber] = useState(1);
     const [targetBackgroundNumber, setTargetBackgroundNumber] = useState(74);
     const [targetSvitokNumber, setTargetSvitokNumber] = useState(2);
-    const [needUpdate, setNeedUpdate] = useState(false);
+    const [needUpdate, setNeedUpdate] = useState(false); 
     const setTarget = (a: number, b: boolean) => {
         const M = [];
         for (let i = 0; i < targetOption.length; i++) M[i] = false;
@@ -313,22 +312,6 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                 return "left";
         }
     }
-    useEffect(() => {
-        let r = '';
-        for (let i = 0; i < colors.length; i++) r = r + colors[i] + ',';
-        for (let i = 0; i < sizePole.length; i++) r = r + sizePole[i] + ',';
-        for (let i = 0; i < minMax.length; i++) r = r + minMax[i] + ',';
-        for (let i = 0; i < sizeText.length; i++) r = r + sizeText[i] + ',';
-        for (let i = 0; i < paddingText.length; i++) r = r + paddingText[i] + ',';
-        for (let i = 0; i < alignValue.length; i++) r = r + alignValue[i] + ',';
-        for (let i = 0; i < borderRadiusValue.length; i++) r = r + borderRadiusValue[i] + ',';
-        r = r + kolvo[0] + ',' + kolvo[1] + ',';
-        r = r + targetBackgroundNumber + ',';
-        r = r + targetSvitokNumber + ',';
-        r = r + targetFont1 + ',';
-        r = r + lineCut + ',';
-        setSettingString(r);
-    }, [lineCut, colors, sizePole, minMax, sizeText, paddingText, alignValue, borderRadiusValue, kolvo, targetBackgroundNumber, targetFont1]);
     useEffect(() => {
         document.getElementById("ThisIsColorsConst")?.style.setProperty("--h", String(kolvo[0]) );
         document.getElementById("ThisIsColorsConst")?.style.setProperty("--w", String(kolvo[1]) );
@@ -1360,81 +1343,102 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
             <div className={style.Options + ' ' + (showOptions ? '' : style.HideWindow)}>
                 <div className={style.Hide}> <div className={style.Text} onClick={() => { setShowOptions(false); }}>Скрыть</div> </div>
                 <div className={style.OpionsCase}>
-                    <input className={style.MyOptionSetting} type="text" value={settingString} onChange={(e) => {
-                        let points = 0, pointe = -1;
-                        const r: string = e.target.value;
-                        let colorsN = [''];
-                        for (let i = 0; i < colors.length; i++) {
-                            points = pointe + 1;
-                            pointe = r.indexOf(',', points);
-                            colorsN[i] =r.slice(points, pointe);
-                        }
-                        setColors(colorsN);
-                        let sizePoleN: number[] = [];
-                        for (let i = 0; i < sizePole.length; i++) {
-                            points = pointe + 1;
-                            pointe = r.indexOf(',', points);
-                            sizePoleN[i] =Number(r.slice(points, pointe));
-                        }
-                        setSizesPole(sizePoleN);
-                        let minMaxN: number[] = [];
-                        for (let i = 0; i < minMax.length; i++) {
-                            points = pointe + 1;
-                            pointe = r.indexOf(',', points);
-                            minMaxN[i] =Number(r.slice(points, pointe));
-                        }
-                        setMinMax(minMaxN);
-                        let sizeTextN: number[] = [];
-                        for (let i = 0; i < sizeText.length; i++) {
-                            points = pointe + 1;
-                            pointe = r.indexOf(',', points);
-                            sizeTextN[i] =Number(r.slice(points, pointe));
-                        }
-                        setSizesText(sizeTextN);
-                        let paddingTextN: number[] = [];
-                        for (let i = 0; i < paddingText.length; i++) {
-                            points = pointe + 1;
-                            pointe = r.indexOf(',', points);
-                            paddingTextN[i] =Number(r.slice(points, pointe));
-                        }
-                        setPaddingText(paddingTextN);
-                        let alignValueN: number[] = [];
-                        for (let i = 0; i < alignValue.length; i++) {
-                            points = pointe + 1;
-                            pointe = r.indexOf(',', points);
-                            alignValueN[i] =Number(r.slice(points, pointe));
-                        }
-                        setAlignValue(alignValueN);
-                        let borderRadiusValueN: number[] = [];
-                        console.log(borderRadiusValue);
-                        for (let i = 0; i < borderRadiusValue.length; i++) {
-                            points = pointe + 1;
-                            pointe = r.indexOf(',', points);
-                            borderRadiusValueN[i] =Number(r.slice(points, pointe));
-                            console.log(r.slice(points, pointe));
-                        }
-                        let KolvoN: number[] = [];
-                        setBorderRadiusValue(borderRadiusValueN);
-                        points = pointe + 1;
-                        pointe = r.indexOf(',', points);
-                        KolvoN[0] = Number(r.slice(points, pointe));
-                        points = pointe + 1;
-                        pointe = r.indexOf(',', points);
-                        KolvoN[1] = Number(r.slice(points, pointe));
-                        setKolvo(KolvoN);
-                        points = pointe + 1;
-                        pointe = r.indexOf(',', points);
-                        setTargetBackgroundNumber(Number(r.slice(points, pointe)));
-                        points = pointe + 1;
-                        pointe = r.indexOf(',', points);
-                        setTargetSvitokNumber(Number(r.slice(points, pointe)));
-                        points = pointe + 1;
-                        pointe = r.indexOf(',', points);
-                        setTargetFont1(Number(r.slice(points, pointe)));
-                        points = pointe + 1;
-                        pointe = r.indexOf(',', points);
-                        setLineCut(r.slice(points, pointe) == 'true' ? true : false);
-                    }} />
+                <div className={style.SettingDownload}>
+                        <div className={style.But} onClick={() => {
+                            //создаем файл
+                            const ToString = (myNewSetting: string, myStringMas: string[]|boolean[]|number[], settingName: string) => {
+                                let r = myNewSetting + settingName + ':';
+                                for (let i = 0; i < myStringMas.length; i++)
+                                    r = r + myStringMas[i] + ',';
+                                r = r.slice(0,r.length-1) + '\n';
+                                return r;
+                            };
+                            let myNewSetting = '';
+                            myNewSetting = ToString(myNewSetting, colors, 'colors');
+                            myNewSetting = ToString(myNewSetting, sizePole, 'sizePole');
+                            myNewSetting = ToString(myNewSetting, sizeText, 'sizeText');
+                            myNewSetting = ToString(myNewSetting, alignValue, 'alignValue');
+                            myNewSetting = ToString(myNewSetting, paddingText, 'paddingText');
+                            myNewSetting = ToString(myNewSetting, borderRadiusValue, 'borderRadiusValue');
+                            myNewSetting = ToString(myNewSetting, minMax, 'minMax');
+                            myNewSetting = ToString(myNewSetting, kolvo, 'kolvo');
+                            myNewSetting = ToString(myNewSetting, [lineCut], 'lineCut');
+                            myNewSetting = ToString(myNewSetting, [targetFont1], 'targetFont1');
+                            myNewSetting = ToString(myNewSetting, [targetBackgroundNumber], 'targetBackgroundNumber');
+                            myNewSetting = ToString(myNewSetting, [targetSvitokNumber], 'targetSvitokNumber');
+                            myNewSetting = ToString(myNewSetting, [blockMinMax], 'blockMinMax');
+                            myNewSetting = ToString(myNewSetting, blockColor, 'blockColor');
+                            myNewSetting = ToString(myNewSetting, blockSizePole, 'blockSizePole');
+                            myNewSetting = ToString(myNewSetting, blockSizeText, 'blockSizeText');
+                            myNewSetting = ToString(myNewSetting, blockPaddingText, 'blockPaddingText');
+                            myNewSetting = ToString(myNewSetting, blockAlignValue, 'blockAlignValue');
+                            myNewSetting = ToString(myNewSetting, blockBorderRadius, 'blockBorderRadius');
+                            let blob = new Blob(["\ufeff", myNewSetting], { type: "text;charset=windows-1251" });
+                            const url = URL.createObjectURL(blob);
+                            const anchor = document.createElement('a');
+                            anchor.href = url;
+                            anchor.download = "MySpellsSettings.txt";
+                            document.body.appendChild(anchor);
+                            anchor.click();
+                            document.body.removeChild(anchor);
+                            URL.revokeObjectURL(url);
+                        }}>{'Сохранить настройки'}</div>
+                        
+                        <input className={style.Hide} type="file" id="mySettingInputFile" onChange={() => {
+                            const FromFile = (myString: string, settingName: string, Mas: string[]|boolean[]|number[]) => {
+                                let start = myString.indexOf(settingName);
+                                let count = 0;
+                                if (start != -1) {
+                                    start = myString.indexOf(':', start);
+                                    let end = myString.indexOf('\n', start);
+                                    if (end == -1) end = myString.length;
+                                    if (start != -1) {
+                                        for (start; start < end - 1 && start != -1;) {
+                                            let next = myString.indexOf(',', start + 1);
+                                            if (next > end) next = end;
+                                            if(typeof Mas[0] == 'string') Mas[count] = myString.slice(start + 1, next);
+                                            if(typeof Mas[0] == 'number') Mas[count] = Number(myString.slice(start + 1, next));
+                                            if(typeof Mas[0] == 'boolean') Mas[count] = (myString.slice(start + 1, next) == 'false') ? false : true;
+                                            start = next;
+                                            count++;
+                                        }
+                                    }
+                                }
+                                return Mas;
+                            };
+                            const q = (document.getElementById("mySettingInputFile") as HTMLInputElement).files;
+                            if (q != null) {
+                                let reader = new FileReader();
+                                reader.readAsText(q[0], 'windows-1251');
+                                reader.onload = function () {
+                                    let r = reader.result;
+                                    if (r) {
+                                        setColors(FromFile(r as string, 'colors', [...colors]) as string[]);
+                                        setSizesPole(FromFile(r as string, 'sizePole', [...sizePole]) as number[]);
+                                        setSizesText(FromFile(r as string, 'sizeText', [...sizeText]) as number[]);
+                                        setAlignValue(FromFile(r as string, 'alignValue', [...alignValue]) as number[]);
+                                        setPaddingText(FromFile(r as string, 'paddingText', [...paddingText]) as number[]);
+                                        setBorderRadiusValue(FromFile(r as string, 'borderRadiusValue', [...borderRadiusValue]) as number[]);
+                                        setMinMax(FromFile(r as string, 'minMax', [...minMax]) as number[]);
+                                        setKolvo(FromFile(r as string, 'kolvo', [...kolvo]) as number[]);
+                                        setLineCut((FromFile(r as string, 'lineCut', [lineCut]) as boolean[])[0]);
+                                        setTargetFont1((FromFile(r as string, 'targetFont1', [targetFont1]) as number[])[0]);
+                                        setTargetBackgroundNumber((FromFile(r as string, 'targetBackgroundNumber', [targetBackgroundNumber]) as number[])[0]);
+                                        setTargetSvitokNumber((FromFile(r as string, 'targetSvitokNumber', [targetSvitokNumber]) as number[])[0]);
+                                        setBlockMinMax((FromFile(r as string, 'blockMinMax', [blockMinMax]) as boolean[])[0]);
+                                        setBlockColor(FromFile(r as string, 'blockColor', [...blockColor]) as boolean[]);
+                                        setBlockSizePole(FromFile(r as string, 'blockSizePole', [...blockSizePole]) as boolean[]);
+                                        setBlockSizeText(FromFile(r as string, 'blockSizeText', [...blockSizeText]) as boolean[]);
+                                        setBlockPaddingText(FromFile(r as string, 'blockPaddingText', [...blockPaddingText]) as boolean[]);
+                                        setBlockAlignValue(FromFile(r as string, 'blockAlignValue', [...blockAlignValue]) as boolean[]);
+                                        setBlockBorderRadius(FromFile(r as string, 'blockBorderRadius', [...blockBorderRadius]) as boolean[]);
+                                    }
+                                };
+                                (document.getElementById("mySettingInputFile") as HTMLInputElement).value = "";
+                            };
+                        }}/>
+                        <label className={style.But} htmlFor="mySettingInputFile">{'Загрузить'}</label>
+                    </div>
                     <OptionCase nameSetting={'Количество на листе'} targetThis={targetOption[1]} setTarget={setTarget} number={1}>
                         <div>
                             <OptionSize text={"По ширине"} size={kolvo[1]} number={1} setSize={setKolv} min={1} max={5} block={false} setBlock={undefined} />
