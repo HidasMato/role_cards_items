@@ -262,7 +262,9 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
     const colorsNames = ["--ListColor","--CardColorObvodka","--CardZagolovokBackgroundColor","--CardZagolovokTextColor","--CardDescriptionBackgroundColor","--CardDescriptionColor","--CardDownBackgroundColor","--CardDownTextColor","--Krug1BorderColor","--Krug1BackgroundColor","--Krug1TextColor","--Krug2BorderColor","--Krug2BackgroundColor","--Krug2TextColor","--Krug3BorderColor","--Krug3BackgroundColor","--Krug3TextColor","--Krug4BorderColor","--Krug4BackgroundColor","--Krug4TextColor","--CardBackColorObvodka","--CardBackZagolovokBackgroundColor","--CardBackZagolovokTextColor","--CardPerBackgroundColor","--CardPerTextColor","--CardBackDescriptionBackgroundColor","--CardBackDescriptionColor","--CardBackDownBackgroundColor","--CardBackDownTextColor"];
     const [sizePole, setSizesPole] = useState([35,15,53,53,2,53,53,2,53,53,2,53,53,2,35,15,15,297,210,173,13,173,78,40,13,40,78]);
     const sizePoleNames = ["--CardZagolovokTextSize","--CardDownTextSize","--Krug1W","--Krug1H","--Krug1Bordersize","--Krug2W","--Krug2H","--Krug2Bordersize","--Krug3W","--Krug3H","--Krug3Bordersize","--Krug4W","--Krug4H","--Krug4Bordersize","--CardBackZagolovokTextSize","--CardPerTextSize","--CardBackDownTextSize","--ListH","--ListW","--Krug1L","--Krug1T","--Krug2L","--Krug2T","--Krug3L","--Krug3T","--Krug4L","--Krug4T"];
-    const [sizeText, setSizesText] = useState([16,9,14,12,12,12,12,16,8,14,110]);
+    const [imgSize, setImgSize] = useState([100, 100, 0, 10, 50, 0, 0]);
+    const imgSizeNames = ["--ImgHeight","--ImgWidth", "--ImgRotate","--ImgPaddingT","--ImgPaddingB","--ImgPaddingL","--ImgPaddingR"];
+    const [sizeText, setSizesText] = useState([16, 9, 14, 12, 12, 12, 12, 16, 8, 14, 110]);
     const sizeTextNames = ["--CardZagolovokTextFont","--CardDescriptionFont","--CardDownTextFont","--Krug1FontSize","--Krug2FontSize","--Krug3FontSize","--Krug4FontSize","--CardBackZagolovokTextFont","--CardPerTextFont","--CardBackDownTextFont","--LineHeight"];
     const [alignValue, setAlignValue] = useState([2,2,2,2,2,4,2]);
     const alignNames = ["--CardZagolovokTextAlign","--CardDescriptionTextAlign","--CardDownTextAlign","--CardBackZagolovokTextAlign","--CardPerTextAlign","--CardBackDescriptionTextAlign","--CardBackDownTextAlign"];
@@ -272,6 +274,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
     const bordwrRadiusNames = ["--CardZagolovok┌", "--CardZagolovok┐", "--CardZagolovok┘", "--CardZagolovok└","--CardInside┌","--CardInside┐","--CardInside┘","--CardInside└","--CardDown┌","--CardDown┐","--CardDown┘","--CardDown└","--CardBackZagolovok┌","--CardBackZagolovok┐","--CardBackZagolovok┘","--CardBackZagolovok└","--CardBackPer┌","--CardBackPer┐","--CardBackPer┘","--CardBackPer└","--CardBackInside┌","--CardBackInside┐","--CardBackInside┘","--CardBackInside└","--CardBackDown┌","--CardBackDown┐","--CardBackDown┘","--CardBackDown└","--Krug1┌","--Krug1┐","--Krug1┘","--Krug1└","--Krug2┌","--Krug2┐","--Krug2┘","--Krug2└","--Krug3┌","--Krug3┐","--Krug3┘","--Krug3└","--Krug4┌","--Krug4┐","--Krug4┘","--Krug4└"];
     const [minMax, setMinMax] = useState([8, 12]);
     const [blockMinMax, setBlockMinMax] = useState(false);
+    const [blockImgSize, setBlockImgSize] = useState([false, true, false, false, false, false, false]);
     const [blockColor, setBlockColor] = useState([false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]);
     const [blockSizePole, setBlockSizePole] = useState([false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]);
     const [blockSizeText, setBlockSizeText] = useState([false,false,false,false,false,false,false,false,false,false,false]);
@@ -316,6 +319,11 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
         document.getElementById("ThisIsColorsConst")?.style.setProperty("--h", String(kolvo[0]) );
         document.getElementById("ThisIsColorsConst")?.style.setProperty("--w", String(kolvo[1]) );
     }, [kolvo]);
+    useEffect(() => {
+        for (let i = 0; i < 2; i++) document.getElementById("ThisIsColorsConst")?.style.setProperty(imgSizeNames[i], blockImgSize[i] === true ? 'auto' : imgSize[i] + '%');
+        document.getElementById("ThisIsColorsConst")?.style.setProperty(imgSizeNames[2], imgSize[2] + 'deg');
+        for (let i = 3; i < 7; i++) document.getElementById("ThisIsColorsConst")?.style.setProperty(imgSizeNames[i], imgSize[i] + 'px');
+    }, [imgSize]);
     useEffect(() => {
         document.getElementById("ThisIsColorsConst")?.style.setProperty("--LineCut", lineCut ? '1px' : '0px' );
     }, [lineCut]);
@@ -363,6 +371,20 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
         if (V[14]) M[14] = M[0];
         if (V[16]) M[16] = M[1];
         setSizesPole(M);
+    };
+    const setImgSizes = (a: number, b: number, vlog?: boolean) => {
+        const M = [...imgSize];
+        M[a] = b;
+        const V = [...blockImgSize];
+        if (vlog != undefined) V[a] = vlog;
+        if (V[2]) M[2] = 0;
+        setImgSize(M);
+    };
+    const setBlocImgSize = (a: number, b: number, bloc: boolean) => {
+        const M = [...blockImgSize];
+        M[a] = bloc;
+        setImgSizes(a, b, bloc);
+        setBlockImgSize(M);
     };
     const setBlocSizePole = (a: number, b: number, bloc: boolean) => {
         const M = [...blockSizePole];
@@ -1360,6 +1382,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                             myNewSetting = ToString(myNewSetting, alignValue, 'alignValue');
                             myNewSetting = ToString(myNewSetting, paddingText, 'paddingText');
                             myNewSetting = ToString(myNewSetting, borderRadiusValue, 'borderRadiusValue');
+                            myNewSetting = ToString(myNewSetting, imgSize, 'imgSize');
                             myNewSetting = ToString(myNewSetting, minMax, 'minMax');
                             myNewSetting = ToString(myNewSetting, kolvo, 'kolvo');
                             myNewSetting = ToString(myNewSetting, [lineCut], 'lineCut');
@@ -1370,6 +1393,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                             myNewSetting = ToString(myNewSetting, blockColor, 'blockColor');
                             myNewSetting = ToString(myNewSetting, blockSizePole, 'blockSizePole');
                             myNewSetting = ToString(myNewSetting, blockSizeText, 'blockSizeText');
+                            myNewSetting = ToString(myNewSetting, blockImgSize, 'blockImgSize');
                             myNewSetting = ToString(myNewSetting, blockPaddingText, 'blockPaddingText');
                             myNewSetting = ToString(myNewSetting, blockAlignValue, 'blockAlignValue');
                             myNewSetting = ToString(myNewSetting, blockBorderRadius, 'blockBorderRadius');
@@ -1419,6 +1443,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                                         setAlignValue(FromFile(r as string, 'alignValue', [...alignValue]) as number[]);
                                         setPaddingText(FromFile(r as string, 'paddingText', [...paddingText]) as number[]);
                                         setBorderRadiusValue(FromFile(r as string, 'borderRadiusValue', [...borderRadiusValue]) as number[]);
+                                        setImgSize(FromFile(r as string, 'imgSize', [...imgSize]) as number[]);
                                         setMinMax(FromFile(r as string, 'minMax', [...minMax]) as number[]);
                                         setKolvo(FromFile(r as string, 'kolvo', [...kolvo]) as number[]);
                                         setLineCut((FromFile(r as string, 'lineCut', [lineCut]) as boolean[])[0]);
@@ -1429,6 +1454,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                                         setBlockColor(FromFile(r as string, 'blockColor', [...blockColor]) as boolean[]);
                                         setBlockSizePole(FromFile(r as string, 'blockSizePole', [...blockSizePole]) as boolean[]);
                                         setBlockSizeText(FromFile(r as string, 'blockSizeText', [...blockSizeText]) as boolean[]);
+                                        setBlockImgSize((FromFile(r as string, 'blockImgSize', [...blockImgSize]) as boolean[]));
                                         setBlockPaddingText(FromFile(r as string, 'blockPaddingText', [...blockPaddingText]) as boolean[]);
                                         setBlockAlignValue(FromFile(r as string, 'blockAlignValue', [...blockAlignValue]) as boolean[]);
                                         setBlockBorderRadius(FromFile(r as string, 'blockBorderRadius', [...blockBorderRadius]) as boolean[]);
@@ -1448,24 +1474,36 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                     <OptionCase nameSetting={'Выбор картинки'} targetThis={targetOption[2]} setTarget={setTarget} number={2}>
                         <>
                             <div className={style.RubahaBackNext}>
-                                <div>{rubahaCaseNumber > 0 ? <button onClick={() => { setRubahaCaseNumber(rubahaCaseNumber - 1) }}>Назад</button> : null}</div>
-                                <p>страница {rubahaCaseNumber + 1}</p>
-                                <div>{rubahaCaseNumber < 46 ? <button onClick={() => { setRubahaCaseNumber(rubahaCaseNumber + 1) }}>Вперед</button> : null}</div>
+                                <div className={style.but}>{rubahaCaseNumber > 0 ? <button onClick={() => { setRubahaCaseNumber(rubahaCaseNumber - 1) }}>Назад</button> : null}</div>
+                                <div className={style.p}><div>страница {rubahaCaseNumber + 1}</div></div>
+                                <div className={style.but}>{rubahaCaseNumber < 46 ? <button onClick={() => { setRubahaCaseNumber(rubahaCaseNumber + 1) }}>Вперед</button> : null}</div>
                             </div>
                             {getRubahaCase()}
                         </>
                     </OptionCase>
-                    <OptionCase nameSetting={'Выбор свитка'} targetThis={targetOption[3]} setTarget={setTarget} number={3}>
+                    <OptionCase nameSetting={'Настройки картинки'} targetThis={targetOption[3]} setTarget={setTarget} number={3}>
+                        <div>
+                            <div>Растягивание по карточке<br />Значения учитываются в процентах от размера карточки<br />авто значение автоматического размера в пропорциях<br />100% и 100% растянет картинку по карточке<br />100% и авто растянет картинку по карточке по высоте, а ширина ее будет выбрана автоматически<br />авто авто картинка будет в своем первоначальном размере<br />Подгонка по высоте и ширине проводится при повороте в 0 градусов</div>
+                            <OptionSize text={"% По высоте"} size={imgSize[0]} textAs={"Авто"} number={0} setSize={setImgSizes} min={0} max={500} block={blockImgSize[0]} setBlock={setBlocImgSize} />
+                            <OptionSize text={"% По ширине"} size={imgSize[1]} textAs={"Авто"} number={1} setSize={setImgSizes} min={0} max={500} block={blockImgSize[1]} setBlock={setBlocImgSize} />
+                            <OptionSize text={"град Поворот"} size={imgSize[2]} textAs={"0"} number={2} setSize={setImgSizes} min={-360} max={360} block={blockImgSize[2]} setBlock={setBlocImgSize} />
+                            <OptionSize text={"Отступ сверху"} size={imgSize[3]} number={3} setSize={setImgSizes} min={0} max={200} block={blockImgSize[3]} setBlock={setBlocImgSize} />
+                            <OptionSize text={"Отступ снизу"} size={imgSize[4]} number={4} setSize={setImgSizes} min={0} max={200} block={blockImgSize[4]} setBlock={setBlocImgSize} />
+                            <OptionSize text={"Отступ слева"} size={imgSize[5]} number={5} setSize={setImgSizes} min={0} max={200} block={blockImgSize[5]} setBlock={setBlocImgSize} />
+                            <OptionSize text={"Отступ справа"} size={imgSize[6]} number={6} setSize={setImgSizes} min={0} max={200} block={blockImgSize[6]} setBlock={setBlocImgSize} />
+                        </div>
+                    </OptionCase>
+                    <OptionCase nameSetting={'Выбор свитка'} targetThis={targetOption[4]} setTarget={setTarget} number={4}>
                         <>
                             <div className={style.RubahaBackNext}>
-                                <div>{svitokCaseNumber > 0 ? <button onClick={() => { setSvitokCaseNumber(svitokCaseNumber - 1) }}>Назад</button> : null}</div>
-                                <p>страница {svitokCaseNumber + 1}</p>
-                                <div>{svitokCaseNumber < 2 ? <button onClick={() => { setSvitokCaseNumber(svitokCaseNumber + 1) }}>Вперед</button> : null}</div>
+                                <div className={style.but}>{svitokCaseNumber > 0 ? <button onClick={() => { setSvitokCaseNumber(svitokCaseNumber - 1) }}>Назад</button> : null}</div>
+                                <div className={style.p}><div>страница {svitokCaseNumber + 1}</div></div>
+                                <div className={style.but}>{svitokCaseNumber < 1 ? <button onClick={() => { setSvitokCaseNumber(svitokCaseNumber + 1) }}>Вперед</button> : null}</div>
                             </div>
                             {getSvitokCase()}
                         </>
                     </OptionCase>
-                    <OptionCase nameSetting={'Цвета'} targetThis={targetOption[4]} setTarget={setTarget} number={4}>
+                    <OptionCase nameSetting={'Цвета'} targetThis={targetOption[5]} setTarget={setTarget} number={5}>
                         <div>
                             <OptionColor text={"Фон листа"} color={colors[0]} number={0} setColor={setColor} block={blockColor[0]} setBlock={setBlocColor} name={colorsNames[0]} />
                             <OptionColor text={"Лицо. Края карточки"} color={colors[1]} number={1} setColor={setColor} block={blockColor[1]} setBlock={setBlocColor} name={colorsNames[1]} />
@@ -1498,7 +1536,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                             <OptionColor text={"Рубаха. Текст подписи"} color={colors[28]} number={28} setColor={setColor} block={blockColor[28]} setBlock={setBlocColor} name={colorsNames[28]} />
                         </div>
                     </OptionCase>
-                    <OptionCase nameSetting={'Размеры полей'} targetThis={targetOption[5]} setTarget={setTarget} number={5}>
+                    <OptionCase nameSetting={'Размеры полей'} targetThis={targetOption[6]} setTarget={setTarget} number={6}>
                         <div>
                             <OptionSize text={"Лицо. Заголовок"} size={sizePole[0]} number={0} setSize={setSizePole} min={0} max={99} block={blockSizePole[0]} setBlock={setBlocSizePole} />
                             <OptionSize text={"Лицо. Подпись"} size={sizePole[1]} number={1} setSize={setSizePole} min={0} max={49} block={blockSizePole[1]} setBlock={setBlocSizePole} />
@@ -1530,7 +1568,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                             </div>
                         </div>
                     </OptionCase>
-                    <OptionCase nameSetting={'Положение кругов'} targetThis={targetOption[6]} setTarget={setTarget} number={6}>
+                    <OptionCase nameSetting={'Положение кругов'} targetThis={targetOption[7]} setTarget={setTarget} number={7}>
                         <div>
                             <OptionSize text={"Круг 1. Горизонталь"} size={sizePole[19]} number={19} setSize={setSizePole} min={0} max={500} block={blockSizePole[19]} setBlock={setBlocSizePole} />
                             <OptionSize text={"Круг 1. Вертикаль"} size={sizePole[20]} number={20} setSize={setSizePole} min={0} max={500} block={blockSizePole[20]} setBlock={setBlocSizePole} />
@@ -1542,7 +1580,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                             <OptionSize text={"Круг 4. Вертикаль"} size={sizePole[26]} number={26} setSize={setSizePole} min={0} max={500} block={blockSizePole[26]} setBlock={setBlocSizePole} />
                         </div>
                     </OptionCase>
-                    <OptionCase nameSetting={'Размеры текста'} targetThis={targetOption[7]} setTarget={setTarget} number={7}>
+                    <OptionCase nameSetting={'Размеры текста'} targetThis={targetOption[8]} setTarget={setTarget} number={8}>
                         <div>
                             <div className={style.FontChose}><div>№ <input type="number" name="" id="" value={targetFont1} min={0} max={19} onChange={(e)=>{setTargetFont1(Number(e.target.value))}} />{"Шрифта "}</div>{fontMas[targetFont1]}</div>
                             <OptionSize text={"Лицо. Заголовок"} size={sizeText[0]} number={0} setSize={setSizeText} min={0} max={99} block={blockSizeText[0]} setBlock={setBlocSizeText} />
@@ -1557,7 +1595,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                             <OptionSize text={"Рубаха. Подпись"} textAs={"Как лицо"} size={sizeText[9]} number={9} setSize={setSizeText} min={0} max={99} block={blockSizeText[9]} setBlock={setBlocSizeText} />
                         </div>
                     </OptionCase>
-                    <OptionCase nameSetting={'Положение текста'} targetThis={targetOption[8]} setTarget={setTarget} number={8}>
+                    <OptionCase nameSetting={'Положение текста'} targetThis={targetOption[9]} setTarget={setTarget} number={9}>
                         <div>
                             <OptionAllain text={"Лицо. Заголовок"} value={alignValue[0]} number={0} setValue={setAlignsValue} block={blockAlignValue[0]} setBlock={setBlocAlignValue} />
                             <OptionAllain text={"Лицо. Описание"} value={alignValue[1]} number={1} setValue={setAlignsValue} block={blockAlignValue[1]} setBlock={setBlocAlignValue} />
@@ -1568,7 +1606,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                             <OptionAllain text={"Рубаха. Подпись"} value={alignValue[6]} number={6} setValue={setAlignsValue} block={blockAlignValue[6]} setBlock={setBlocAlignValue} />
                         </div>
                     </OptionCase>
-                    <OptionCase nameSetting={'Отступы'} targetThis={targetOption[9]} setTarget={setTarget} number={9}>
+                    <OptionCase nameSetting={'Отступы'} targetThis={targetOption[10]} setTarget={setTarget} number={10}>
                         <div>
                             <OptionSize text={"Верхнее поле листа"} size={paddingText[0]} number={0} setSize={setPaddinText} min={0} max={400} block={blockPaddingText[0]} setBlock={setBlocPaddingText} />
                             <OptionSize text={"Боковые поля листа"} size={paddingText[1]} number={1} setSize={setPaddinText} min={0} max={400} block={blockPaddingText[1]} setBlock={setBlocPaddingText} />
@@ -1596,7 +1634,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                             <OptionSize text={"Рубаха. Подпись"} size={paddingText[23]} number={23} setSize={setPaddinText} min={0} max={199} block={blockPaddingText[23]} setBlock={setBlocPaddingText} />
                         </div>
                     </OptionCase>
-                    <OptionCase nameSetting={'Округлости'} targetThis={targetOption[10]} setTarget={setTarget} number={10}>
+                    <OptionCase nameSetting={'Округлости'} targetThis={targetOption[11]} setTarget={setTarget} number={11}>
                         <div>
                             <OptionSize text={"Лицо. Заголовок ┌"} size={borderRadiusValue[0]} number={0} setSize={setBordersRadiusValue} min={0} max={99} block={blockBorderRadius[0]} setBlock={setBlocBorderRadius} />
                             <OptionSize text={"Лицо. Заголовок ┐"} textAs={"как ┌"} size={borderRadiusValue[1]} number={1} setSize={setBordersRadiusValue} min={0} max={99} block={blockBorderRadius[1]} setBlock={setBlocBorderRadius} />
@@ -1644,7 +1682,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
                             <OptionSize text={"Рубаха. Подпись └"} textAs={"как ┌"} size={borderRadiusValue[27]} number={27} setSize={setBordersRadiusValue} min={0} max={99} block={blockBorderRadius[27]} setBlock={setBlocBorderRadius} />
                         </div>
                     </OptionCase>
-                    <OptionCase nameSetting={'Подгонка описания'} targetThis={targetOption[11]} setTarget={setTarget} number={11}>
+                    <OptionCase nameSetting={'Подгонка описания'} targetThis={targetOption[12]} setTarget={setTarget} number={12}>
                         <div>
                             <OptionSize text={"% Высота строки (от 0 до 200)"} size={sizeText[10]} number={10} setSize={setSizeText} min={0} max={200} block={blockSizeText[10]} setBlock={setBlocSizeText} />
                             <OptionSize text={"Минимальный размер"} size={minMax[0]} number={0} setSize={setMinMaxs} min={0} max={blockMinMax ? 99 : minMax[1]} block={false} setBlock={setBlocMinMax} />
@@ -1743,7 +1781,7 @@ const SpellMain = ({ }: AlertProps): JSX.Element => {
             {
                 !isCSVRedactor
                     ? <div className={style.Lists + ' ' + (showRedactor ? style.ListDown : '') + ' ' + (showOptions ? style.ListRigth : '')}> {getCards()} </div>
-                    : <div className={style.AroundTwoCards}>
+                    : <div className={style.AroundTwoCards + (showOptions ? ' ' + style.AddPadRig : '')}>
                         <div className={style.TwoCards}>
                             <div className={style.OneCard}><CardItem targetFont={String(fontMas[targetFont1])} keyt={-1} Pole={newCard} cardImg={String(getBackCardImg(newCard[1]))} svitok={String(getSvitokCardImg(newCard[2]))} /></div>
                             <div className={style.OneCard}><CardItem targetFont={String(fontMas[targetFont1])} isBack={true} keyt={-1} startPerepolnen={startPerepolnen} plusPerepolnen={plusPerepolnen} minMax={minMax} Pole={newCard}/></div>

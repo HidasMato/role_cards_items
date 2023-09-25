@@ -180,10 +180,14 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         background-color: var(--CardDescriptionBackgroundColor);
         position: relative;
-        img {
-            width: 100%;
+        padding: var(--ImgPaddingT) var(--ImgPaddingR) var(--ImgPaddingB) var(--ImgPaddingL);
+        .MyImg {
+            height: var(--ImgHeight);
+            width: var(--ImgWidth);
+            transform: rotate(var(--ImgRotate));
         }
         .Description {
             img {

@@ -105,20 +105,26 @@
             }
             .RubahaBackNext {
                 display: flex;
-                p {
-                    width: 30%;
-                }
-                div {
-                    width: 35%;
+
+                .p {
                     display: flex;
                     justify-content: center;
+                    width: 40%;
+                }
+
+                .but {
+                    width: 30%;
+                    display: flex;
+                    justify-content: center;
+
                     button {
-                        width: 80%;
+                        width: 90%;
                         background-color: var(--color1);
                         border: 0.1vh solid var(--color6);
                         border-radius: 4vh;
                         padding: 0 2vh;
                     }
+
                     button:hover {
                         cursor: pointer;
                         background-color: var(--color5);
@@ -438,7 +444,7 @@
         overflow-y: scroll;
         .List{
             margin: 2vh;
-            margin-right: 14vh;
+            margin-right: 22vh;
             height: var(--ListH);
             width: var(--ListW);
             background-color: var(--ListColor);
@@ -476,7 +482,7 @@
         height: 100%;
         width: 100%;
         overflow-y: scroll;
-        padding-right: 50vh;
+        padding-right: 18vh;
         padding-bottom: 38vh;
         .TwoCards {
             padding: calc(2vh + var(--ListPaddingT)) calc(2vh + var(--ListPaddingBok)) calc(2vh + var(--ListPaddingB)) calc(2vh + var(--ListPaddingBok));
@@ -525,6 +531,9 @@
                 }
             }
         }
+    }
+    .AddPadRig {
+        padding-right: 64vh;
     }
     .Viu {
         ::selection {
@@ -711,6 +720,17 @@
     --h: 3;
     --ListH: 297mm;
     --ListW: 210mm;
+
+    
+    --ImgHeight: auto;
+    --ImgWidth: auto;
+    --ImgRotate: 0deg;
+    --ImgPaddingR: 10px;
+    --ImgPaddingT: 10px;
+    --ImgPaddingL: 10px;
+    --ImgPaddingB: 10px;
+
+
     @media print {    
         .Lists {
             height: max-content;

@@ -46,7 +46,7 @@ const Card = ({svitok,cardImg, targetFont, isBack, keyt, Pole, minMax, plusPerep
             <div className={style.Main + ' ' + style[targetFont]}>
                 <div className={style.Zagolovok}><div>{Pole[0]}</div></div>
                 <div className={style.Inside}>
-                    <img src={cardImg} alt="" />
+                    <img className={style.MyImg} src={cardImg} alt="" />
                     {Pole[3]!="" ? <div className={style.Description}>
                         <img src={svitok} alt="" />
                         <div>{Pole[3]}</div>
