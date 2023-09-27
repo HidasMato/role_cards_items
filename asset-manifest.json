@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/role_cards_items/static/css/main.6cb65e06.css",
-    "main.js": "/role_cards_items/static/js/main.15a1d6a0.js",
+    "main.css": "/role_cards_items/static/css/main.7b958392.css",
+    "main.js": "/role_cards_items/static/js/main.c7cf1647.js",
     "static/media/Колода иллюзий.png": "/role_cards_items/static/media/Колода иллюзий.193943db057167ee6b17.png",
     "static/media/Заполярные сапоги.png": "/role_cards_items/static/media/Заполярные сапоги.be1c84882335ad6256a4.png",
     "static/media/Щит от заклинаний.png": "/role_cards_items/static/media/Щит от заклинаний.c72d714650cc22372b62.png",
@@ -268,14 +268,15 @@
     "static/media/Align_center_font_awesome.svg": "/role_cards_items/static/media/Align_center_font_awesome.9af5d979bed188f162cfaf220b2e7f9e.svg",
     "static/media/VK.svg": "/role_cards_items/static/media/VK.3e60d4ac6239f020fcab393903993970.svg",
     "static/media/ArrowDown.svg": "/role_cards_items/static/media/ArrowDown.55f4f7a2b5985acce14255ab5cfaa5be.svg",
+    "static/media/Boosty.svg": "/role_cards_items/static/media/Boosty.7412879df1b69c45bac8e98b21bdda17.svg",
     "static/media/Change.svg": "/role_cards_items/static/media/Change.d2ee68cc10dd187f05c77dcb242a8ce6.svg",
     "static/media/Download.svg": "/role_cards_items/static/media/Download.2c12be50f262402ed0b6824ddad9d049.svg",
     "index.html": "/role_cards_items/index.html",
-    "main.6cb65e06.css.map": "/role_cards_items/static/css/main.6cb65e06.css.map",
-    "main.15a1d6a0.js.map": "/role_cards_items/static/js/main.15a1d6a0.js.map"
+    "main.7b958392.css.map": "/role_cards_items/static/css/main.7b958392.css.map",
+    "main.c7cf1647.js.map": "/role_cards_items/static/js/main.c7cf1647.js.map"
   },
   "entrypoints": [
-    "static/css/main.6cb65e06.css",
-    "static/js/main.15a1d6a0.js"
+    "static/css/main.7b958392.css",
+    "static/js/main.c7cf1647.js"
   ]
 }
