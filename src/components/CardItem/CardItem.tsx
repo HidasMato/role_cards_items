@@ -15,7 +15,8 @@ const Card = ({svitok,cardImg, targetFont, isBack, keyt, Pole, minMax, plusPerep
     let descriptionMain, descriptionText;
     useEffect(() => {
         descriptionMain = document.getElementById("Card " + keyt);
-        descriptionText = document.getElementById("CardControl " + keyt);;
+        descriptionText = document.getElementById("CardControl " + keyt);
+        if(descriptionText) descriptionText.style.justifyContent = 'start';
         if (descriptionText && descriptionMain) {
             let size = minMax? minMax[1] : 10;
             descriptionText.style.fontSize = size + 'px';
@@ -29,6 +30,7 @@ const Card = ({svitok,cardImg, targetFont, isBack, keyt, Pole, minMax, plusPerep
             else {
                 if (plusPerepolnen) plusPerepolnen(keyt, false);
             }
+            descriptionText.style.justifyContent = 'space-between';
         }
     }, [startPerepolnen]);
     if (isBack) {
